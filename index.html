@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bg Automatic Change</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        #stopButton {
+            padding: 10px 20px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <button id="stopButton">Stop Changing Color...</button>
+
+    <script>
+        let intervalId;
+
+        function changeBackgroundColor() {
+            const randomColor = '#' + Math.floor(Math.random() * 16777215).toString(16);
+            document.body.style.backgroundColor = randomColor;
+        }
+
+        function startChangingColor() {
+            intervalId = setInterval(changeBackgroundColor, 1000);
+        }
+
+        function stopChangingColor() {
+            clearInterval(intervalId);
+        }
+
+        startChangingColor();
+        document.getElementById('stopButton').addEventListener('click', stopChangingColor);
+    </script>
+
+</body>
+
+</html>
